@@ -1,20 +1,43 @@
-// Project-1.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
+#include <algorithm>
+#include <string>
+
 
 int main()
 {
-    std::cout << "Hello World!\n";
+
+	std::cout << "Enter a integers lenght: ";
+	int length{};
+	std::cin >> length;
+
+	auto* integers{ new int[length] };
+
+	for (int i = 0; i < length; i++)
+	{
+		std::cout << "Integer #" << i + 1 << ": ";
+		std::cin >> integers[i];
+	}
+
+	std::cout << "How you want your array to be sorted by descending or ascending.";
+	int way{};
+	std::cin >> way;
+
+	if (way == 1)
+	{
+		std::sort(integers, integers + length);
+	}
+	else if (way == 2)
+	{
+		std::sort(integers, integers + length ,std::greater<int>());
+	}
+	else
+	{
+		std::cout << "Try again later :) ";
+	}
+
+	for (int i = 0; i < length; i++)
+	{
+		std::cout << "Integer #" << i + 1 << ": " << integers[i] << '\n';
+	}
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
